@@ -15,11 +15,13 @@
     <link href="css/font-awesome/css/all.min.css?ver=1.1.0" rel="stylesheet">
     <link href="css/main.css?ver=1.1.0" rel="stylesheet">
     <script>
-   var vAudio = document.getElementById("divAudio");
-   function playMusic()
-   {
-      vAudio.play();
-   }
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  if (!isChrome){
+      $('#iframeAudio').remove()
+  }
+  else {
+      $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+  }
 </script>
   </head>
   <body id="top"><video id="backgroundVideo" autoplay loop playsinline muted>
@@ -48,9 +50,12 @@
           <div id="seconds"></div>
         </div>
         
-        <audio id="divAudio">
+    
+        <iframe src="audio/source.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+              <audio id="playAudio">
    <source src="https://github.com/YKS-IT/Staticassets/raw/main/YKS/WhatsApp%20Audio%202021-07-23%20at%2010.45.32%20AM.mpeg" type="audio/mp3">
 </audio>
+</iframe> 
  
         <p class="lead cover-copy">Hold tight ! Something great is going to be happening. A riding group evolved for Society.</p>
       </div>
